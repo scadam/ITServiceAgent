@@ -15,7 +15,7 @@ POST https://dev268987.service-now.com/oauth_token.do
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code
-&code=Yw03AVEEU_fn83rbr1ole8opRj2tMh8KbL_m1c498OckOs1_076TphkSmgvzFQ_gKduQZ2R1KI4kAkBe-6lNMw
+&code=LjjInMdsVOA7XbnTzXOhQVH_WWV0BgQRBnYpNQ0z7pVk2alqsZrIr-AhY-lkqS7fQpmroFdcumTW-z6ftrPPTw
 &client_id=51c46139d07d4895b36d38a935d2b5e6
 &client_secret=winn1e2025
 &redirect_uri=https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect
@@ -31,7 +31,7 @@ curl -X POST https://dev268987.service-now.com/oauth_token.do \
 ####Run Rest API with Entra token
 POST https://dev268987.service-now.com/api/1804822/customorderagent/catalog/orders
 Content-Type: application/json
-Authorization: Bearer GsMjKlTUJ-qDB03_l0on_9YtvTH0YAITNDtZngnZLuwZiLm5WwO1l465WJ0YRb1ansF2XtaDPjvcQzswxfWStw
+Authorization: Bearer WPdqBtCBDkkaZvaeRhIFjnrpApe3AXVOPuLIxitM_kQzO7O0UjARFtEtfK9ZcS6g93St-eK6fqpDM8ZYZNBq-Q
 
 {
   "catalogItemId": "04b7e94b4f7b4200086eeed18110c7fd"

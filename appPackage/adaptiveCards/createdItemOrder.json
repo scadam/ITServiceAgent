@@ -15,15 +15,15 @@
       "facts": [
         {
           "title": "Request Number",
-          "value": "${result.result.number}"
+          "value": "${result.number}"
         },
         {
           "title": "Request Sys ID",
-          "value": "${result.result.sys_id}"
+          "value": "${result.sys_id}"
         },
         {
           "title": "Opened By",
-          "value": "${result.result.opened_by}"
+          "value": "${result.opened_by}"
         }
       ]
     }
@@ -32,7 +32,7 @@
     {
       "type": "Action.OpenUrl",
       "title": "View Request",
-      "url": "https://dev268987.service-now.com/sc_request.do?sys_id=${sys_id}"
+      "url": "https://dev268987.service-now.com/sc_request.do?sys_id=${result.sys_id}"
     }
   ]
 }
