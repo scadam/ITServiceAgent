@@ -1,0 +1,164 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "ServiceNow Incident: ${number}",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "style": "default",
+      "items": [
+        {
+          "type": "FactSet",
+          "facts": [
+            { "title": "State:", "value": "${state}" },
+            { "title": "Opened At:", "value": "${opened_at}" },
+            { "title": "Closed At:", "value": "${closed_at}" },
+            { "title": "Caller:", "value": "${opened_by.display_value}" },
+            { "title": "Assignment Group:", "value": "${coalesce(assignment_group.display_value, 'N/A')}" },
+            { "title": "Priority:", "value": "${priority}" },
+            { "title": "Severity:", "value": "${severity}" },
+            { "title": "Urgency:", "value": "${urgency}" },
+            { "title": "System Id:", "value": "${sys_id}" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Editable Fields",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "urgency",
+      "label": "Updated Urgency",
+    "value": "${urgency}",
+      "choices": [
+        { "title": "1 - High", "value": "1" },
+        { "title": "2 - Medium", "value": "2" },
+        { "title": "3 - Low", "value": "3" }
+      ],
+      "style": "compact"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "category",
+      "label": "Category",
+      "value": "${category}",
+      "choices": [
+        { "title": "Software", "value": "Software" },
+        { "title": "Hardware", "value": "Hardware" },
+        { "title": "Network", "value": "Network" },
+        { "title": "Database", "value": "Database" },
+        { "title": "Security", "value": "Security" },
+        { "title": "Access", "value": "Access" },
+        { "title": "Email", "value": "Email" },
+        { "title": "Printer", "value": "Printer" },
+        { "title": "Inquiry / Help", "value": "Inquiry / Help" },
+        { "title": "Other", "value": "Other" }
+      ],
+      "style": "compact"
+    },
+    {
+      "type": "Input.Text",
+      "id": "short_description",
+      "label": "Short Description",
+      "value": "${short_description}"
+    },
+    {
+      "type": "Input.Text",
+      "id": "description",
+      "label": "Description",
+      "isMultiline": true,
+      "value": "${description}"
+    },
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Previous Comments",
+          "weight": "Bolder",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "${comments}",
+      "wrap": true,
+      "fontType": "Monospace"
+    },
+    {
+      "type": "Input.Text",
+      "id": "comments",
+      "label": "Add New Comment",
+      "isMultiline": true,
+      "placeholder": "Enter your comment here..."
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Execute",
+      "title": "Submit",
+      "verb": "updateIncident",
+      "style": "positive",
+      "data": {
+        "sysparm_display_value": true,
+        "sys_id": "${sys_id}",
+        "short_description": "${short_description}",
+        "description": "${description}",
+        "urgency": "${urgency}",
+        "category": "${category}",
+        "comments": "${comments}"
+      }
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Resolve",
+      "verb": "updateIncident",
+      "style": "default",
+      "data": {
+        "sysparm_display_value": true,
+        "sys_id": "${sys_id}",
+        "short_description": "${short_description}",
+        "description": "${description}",
+        "urgency": "${urgency}",
+        "category": "${category}",
+        "comments": "${comments}",
+        "state": "Closed"
+      }
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Cancel",
+      "verb": "deleteIncident",
+      "style": "destructive",
+      "data": {
+        "sys_id": "${sys_id}"
+      }
+    }
+  ]
+}

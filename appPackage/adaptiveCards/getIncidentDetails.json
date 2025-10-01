@@ -1,0 +1,86 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "ServiceNow Incident: ${number}",
+      "weight": "Bolder",
+      "size": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Priority:", "value": "${priority}" },
+        { "title": "Impact:", "value": "${impact}" },
+        { "title": "Severity:", "value": "${severity}" },
+        { "title": "State:", "value": "${state}" },
+        { "title": "Opened At:", "value": "${opened_at}" },
+        { "title": "Opened By:", "value": "${opened_by.display_value}" },
+        { "title": "Assignment Group:", "value": "${assignment_group.display_value}" }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "short_description",
+      "label": "Short Description",
+      "value": "${short_description}"
+    },
+    {
+      "type": "Input.Text",
+      "id": "description",
+      "label": "Description",
+      "isMultiline": true,
+      "value": "${description}"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "priority",
+      "label": "Updated Priority",
+      "value": "${priority}",
+      "choices": [
+        { "title": "1 - Critical", "value": "1" },
+        { "title": "2 - High", "value": "2" },
+        { "title": "3 - Moderate", "value": "3" },
+        { "title": "4 - Low", "value": "4" }
+      ],
+      "style": "compact"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Previous Comments",
+      "weight": "Bolder",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${comments}",
+      "wrap": true,
+      "fontType": "Monospace"
+    },
+    {
+      "type": "Input.Text",
+      "id": "comments",
+      "label": "Add New Comment",
+      "isMultiline": true,
+      "placeholder": "Enter your comment here..."
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Execute",
+      "title": "Update Incident",
+      "verb": "updateIncident",
+      "style": "positive",
+      "data": {
+        "sys_id": "${sys_id}",
+        "short_description": "${short_description}",
+        "description": "${description}",
+        "priority": "${priority}",
+        "comments": "${comments}"
+      }
+    }
+  ]
+}

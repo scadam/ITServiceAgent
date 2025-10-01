@@ -1,0 +1,593 @@
+openapi: 3.0.4
+info:
+  title: ServiceNow Incident API - Subset
+  description: API to retrieve and create incidents in ServiceNow.
+  version: 1.0.0
+servers:
+  - url: https://dev268987.service-now.com/api
+    description: ServiceNow API Server
+paths:
+  /now/table/question_choice:
+    get:
+      summary: Get available choices for a catalog variable
+      description: Retrieves all defined options for a choice-type catalog variable (type 3). Each option includes a machine-readable value and an optional user-facing label.
+      operationId: getVariableChoices
+      parameters:
+        - name: sysparm_query
+          in: query
+          required: true
+          description: The sys_id of the catalog variable for which to fetch choices.
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          schema:
+            type: boolean
+        - name: sysparm_fields
+          in: query
+          schema:
+            type: string
+        - name: sysparm_limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved variable choices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        value:
+                          type: string
+                          description: The internal value to be submitted in the request
+                        label:
+                          type: string
+                          nullable: true
+                          description: The user-facing label (may be null if not configured)
+  /now/table/{reference_table}:
+    get:
+      summary: Get records from a reference table
+      description: Retrieves the `sys_id` and `name` fields of all records from the specified reference table. Supports lookups for catalog variable values (e.g. reference fields like sys_user or cmdb_ci).
+      operationId: getReferenceTableValues
+      parameters:
+        - name: reference_table
+          in: path
+          required: true
+          description: The name of the ServiceNow table to retrieve reference records from (e.g. sys_user, cmdb_ci, etc.)
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          schema:
+            type: boolean
+        - name: sysparm_fields
+          in: query
+          schema:
+            type: string
+        - name: sysparm_limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved reference records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sys_id:
+                          type: string
+                          description: Unique identifier of the record
+                        name:
+                          type: string
+                          description: Display name of the record in the reference table
+  /now/table/sc_cat_item:
+    get:
+      summary: Gets a list of all catalog items
+      description: Gets the complete list of all catalog items from the REST API, including their sys_id, name, short description, and HTML-formatted description field
+      operationId: getAllCatalogItems
+      parameters:
+        - name: sysparm_display_value
+          in: query
+          schema:
+            type: boolean
+        - name: sysparm_fields
+          in: query
+          schema:
+            type: string
+        - name: sysparm_limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved list of catalog items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sys_id:
+                          type: string
+                          description: Unique system identifier for the catalog item
+                        name:
+                          type: string
+                          description: Name of the catalog item
+                        short_description:
+                          type: string
+                          nullable: true
+                          description: Brief summary of the catalog item
+                        description:
+                          type: string
+                          description: Rich HTML-formatted description of the catalog item
+  /now/table/item_option_new:
+    get:
+      summary: Get catalog item variables
+      description: Retrieves the variable definitions (names, prompts, types, and whether mandatory) for a specific catalog item using its sys_id.
+      operationId: getCatalogItemVariables
+      parameters:
+        - name: sysparm_query
+          in: query
+          required: true
+          description: The sys_id of the catalog item for which to fetch the list of variables.
+          example: cat_item=c3b9cbf29716cd1021983d1e6253afad
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          schema:
+            type: boolean
+        - name: sysparm_fields
+          in: query
+          schema:
+            type: string
+        - name: sysparm_limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved catalog item variables
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sys_id:
+                          type: string
+                          description: The sys_id of the variable
+                        name:
+                          type: string
+                          description: Variable name used as the key in the order request
+                        question_text:
+                          type: string
+                          description: Human-readable label shown to the end user
+                        type:
+                          type: string
+                          description: Variable type (e.g. 1 = string, 3 = single choice, etc.)
+                        mandatory:
+                          type: string
+                          enum: ["true", "false"]
+                          description: Indicates whether this variable is required
+  /1776407/copilot_order_proxy/items/{sys_id}/order:
+    post:
+      summary: Create a new request
+      description: Create a request for a new catalog item 
+      operationId: createRequest
+      parameters:
+        - name: sys_id
+          in: path
+          description: The unique identifier ("sys_id") of the catalog item for which to create the request.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sysparm_quantity:
+                  type: integer
+                  description: Required. Quantity of the item. Cannot be a negative number. Default value is 1.
+                variables:
+                  type: string
+                  description: A string with name value pairs of all variables and their values e.g. '{\"var1\":\"foo\",\"var2\":\"bar\"}'
+      responses:
+        '201':
+          description: Request successfully created
+  /now/table/sys_user:
+    get:
+      summary: Get Users
+      description: Gets the user to use as caller or requested for when creating an incident or catalog item request
+      operationId: getUsers
+      parameters:
+        - name: sysparm_fields
+          in: query
+          description: 'Specifies which fields to return'
+          explode: false
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          description: 'If true, returns display values instead of raw field values.'
+          explode: false
+          schema:
+            type: boolean
+        - name: sysparm_limit
+          in: query
+          description: Limits the number of returned records.
+          explode: false
+          schema:
+            type: integer
+        - name: sysparm_query
+          in: query
+          description: Encoded query string for filtering incidents.
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User groups successfully returned.
+  /now/table/sys_user_group:
+    get:
+      summary: Get User Groups
+      description: Gets the user group to use as an assignment group when creating an incident or ticket
+      operationId: getAllUserGroups
+      security:
+        - OAuth2: []
+      parameters:
+        - name: sysparm_fields
+          in: query
+          description: 'Specifies which fields to return'
+          explode: false
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          description: 'If true, returns display values instead of raw field values.'
+          explode: false
+          schema:
+            type: boolean
+        - name: sysparm_limit
+          in: query
+          description: Limits the number of returned records.
+          explode: false
+          schema:
+            type: integer
+        - name: sysparm_query
+          in: query
+          description: Encoded query string for filtering incidents.
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User groups successfully returned.
+  /now/table/sc_task:
+    get:
+      summary: Get Service Catalog Tasks
+      description: Gets the service catalog tasks associated with a specific request
+      operationId: getServiceCatalogTasks
+      security:
+        - OAuth2: []
+      parameters:
+        - name: sysparm_fields
+          in: query
+          description: 'Specifies which fields to return'
+          explode: false
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          description: 'If true, returns display values instead of raw field values.'
+          explode: false
+          schema:
+            type: boolean
+        - name: sysparm_limit
+          in: query
+          description: Limits the number of returned records.
+          explode: false
+          schema:
+            type: integer
+        - name: sysparm_query
+          in: query
+          description: Encoded query string for filtering incidents.
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User groups successfully returned.
+  /now/table/incident/{sys_id}:
+    get:
+      x-openai-isConsequential: false
+      summary: Fetch the details of a specific incident
+      description: Fetch the details of a specific incident using the sys_id of the incident.
+      operationId: getIncidentDetails
+      parameters:
+        - name: sys_id
+          in: path
+          description: The unique system identifier (`sys_id`) of the incident.
+          required: true
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          description: 'If true, returns display values instead of raw field values.'
+          explode: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successful response containing incident details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      sys_id:
+                        type: string
+                        description: Unique system identifier of the incident.
+                      number:
+                        type: string
+                        description: Human-readable incident number.
+                      state:
+                        type: string
+                        description: Current state of the incident.
+                      short_description:
+                        type: string
+                        description: Brief summary of the issue reported.
+                      priority:
+                        type: string
+                        description: Incident priority level.
+                      impact:
+                        type: string
+                        description: Business impact level.
+                      urgency:
+                        type: string
+                        description: Urgency level.
+                      assignment_group:
+                        type: string
+                        description: The group to which the incident is assigned.
+                      opened_at:
+                        type: string
+                        description: The date at which the incident was opened.
+                      opened_by:
+                        type: object
+                        properties:
+                          display_value:
+                            type: string
+                            description: Name of the user who opened the incident.
+                          link:
+                            type: string
+                            description: API link to the user's profile.
+                    description: Incident details retrieved from ServiceNow.
+    patch:
+      x-openai-isConsequential: false
+      summary: Update an existing Incident
+      description: Updates an existing Incident in ServiceNow for the given sys_id
+      operationId: updateIncident
+      parameters:
+        - name: sys_id
+          in: path
+          description: The sys_id of the ServiceNow incident to update
+          required: true
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          description: 'If true, returns display values instead of raw field values.'
+          explode: false
+          schema:
+            type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                short_description:
+                  type: string
+                  description: Brief summary of the issue.
+                description:
+                  type: string
+                  description: Detailed description of the issue.
+                comments:
+                  type: string
+                  description: Any comments related to the incident.
+                priority:
+                  type: string
+                  description: Priority level (1-5).
+        required: true
+      responses:
+        '201':
+          description: Incident updated successfully
+  /now/table/incident:
+    post:
+      x-openai-isConsequential: false
+      summary: Create a New Incident
+      description: Submits a new incident record to ServiceNow.
+      operationId: createIncident
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                short_description:
+                  type: string
+                  description: Brief summary of the issue.
+                description:
+                  type: string
+                  description: Detailed description of the issue.
+                comments:
+                  type: string
+                  description: Any comments related to the incident.
+                category:
+                  type: string
+                  description: 'The category of the incident (e.g., "Network").'
+                urgency:
+                  type: string
+                  description: Urgency level (1-5).
+                incident_state:
+                  type: string
+                  description: 'Numeric representation of the incident state (e.g., "1" for New).'
+                severity:
+                  type: string
+                  description: Severity level (1-5).
+                impact:
+                  type: string
+                  description: Business impact level (1-5).
+                priority:
+                  type: string
+                  description: Priority level (1-5).
+                assignment_group:
+                  type: string
+                  description: sys_id of the group to which the incident should be assigned.
+                opened_by:
+                  type: string
+                  description: User ID of the person opening the incident.
+        required: true
+      responses:
+        '201':
+          description: Incident successfully created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      sys_id:
+                        type: string
+                        description: Unique system identifier of the newly created incident.
+                      number:
+                        type: string
+                        description: Incident number assigned to the new record.
+                      short_description:
+                        type: string
+                        description: Brief summary of the issue.
+                      state:
+                        type: string
+                        description: Current state of the incident.
+                      assignment_group:
+                        type: string
+                        description: The name of the group to which the incident is assigned.
+                    description: Created incident details.
+    get:
+      x-openai-isConsequential: false
+      summary: Retrieve Incidents
+      description: Fetch incidents.
+      operationId: getIncidents
+      parameters:
+        - name: sysparm_fields
+          in: query
+          description: 'Specifies which fields to return (e.g., "company,priority,impact").'
+          explode: false
+          schema:
+            type: string
+        - name: sysparm_display_value
+          in: query
+          description: 'If true, returns display values instead of raw field values.'
+          explode: false
+          schema:
+            type: boolean
+        - name: sysparm_limit
+          in: query
+          description: Limits the number of returned records.
+          explode: false
+          schema:
+            type: integer
+        - name: sysparm_query
+          in: query
+          description: Encoded query string for filtering incidents.
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response containing incident details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      sys_id:
+                        type: string
+                        description: Unique system identifier of the incident.
+                      number:
+                        type: string
+                        description: Human-readable incident number.
+                      state:
+                        type: string
+                        description: Current state of the incident.
+                      short_description:
+                        type: string
+                        description: Brief summary of the issue reported.
+                      priority:
+                        type: string
+                        description: Incident priority level.
+                      impact:
+                        type: string
+                        description: Business impact level.
+                      urgency:
+                        type: string
+                        description: Urgency level.
+                      assignment_group:
+                        type: string
+                        description: The group to which the incident is assigned.
+                      opened_at:
+                        type: string
+                        description: The date at which the incident was opened.
+                      opened_by:
+                        type: object
+                        properties:
+                          display_value:
+                            type: string
+                            description: Name of the user who opened the incident.
+                          link:
+                            type: string
+                            description: API link to the user's profile.
+                    description: Incident details retrieved from ServiceNow.
+components:
+  securitySchemes:
+    OAuth2:
+      name: OAuth2
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dev268987.service-now.com/oauth_auth.do
+          tokenUrl: https://dev268987.service-now.com/oauth_token.do
+          refreshUrl: https://dev268987.service-now.com/oauth_token.do
+          scopes: {}

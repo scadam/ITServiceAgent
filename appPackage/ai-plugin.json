@@ -1,0 +1,184 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.3/schema.json",
+    "schema_version": "v2.3",
+    "name_for_human": "ServiceNow",
+    "description_for_human": "Work with incidents, service catalog requests, and user groups in ServiceNow.",
+    "description_for_model": "Structured plugin for managing incidents, catalog orders and responding to queries in ServiceNow. Use for sys_id-based actions across tickets, variables, groups, and catalog items.",
+    "namespace": "itassistant",
+    "contact_email": "publisher-email@example.com",
+    "functions": [
+      {
+        "name": "getAllCatalogItems",
+        "description": "Lists catalog items with metadata like name, description, and sys_id.",
+        "capabilities": {
+        "response_semantics": {
+            "data_path": "$.result",
+            "properties": {
+              "title": "$.name"
+            }
+          }
+        }
+      },
+      {
+        "name": "createIncident",
+        "description": "Creates a new incident ticket using context and issue metadata.",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$.result",
+            "properties": {
+              "title": "$.number",
+              "subtitle": "$.category"
+            },
+            "static_template": {
+              "file": "./adaptiveCards/createIncident.json"
+            }
+          },
+          "confirmation": {
+            "type": "AdaptiveCard",
+            "title": "Create Incident",
+            "body": "Your incident will be created with the following details:"
+          }
+        }
+      },
+      {
+        "name": "getIncidents",
+        "description": "Returns a filtered list of past incidents using encoded query filters including sys_id, number, short_description, description, and urgency.",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$",
+            "properties": {
+              "title": "$.result.number",
+              "subtitle": "$.result.category"
+            },
+            "static_template": {
+              "file": "./adaptiveCards/getIncidentList.json"
+            }
+          }
+        }
+      },
+      {
+        "name": "getIncidentDetails",
+        "description": "Gets full metadata for a specific incident using its sys_id.",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$.result",
+            "properties": {
+              "title": "$.number",
+              "subtitle": "$.category"
+            },
+            "static_template": {
+              "file": "./adaptiveCards/createIncident.json"
+            }
+          }
+        }
+      },
+      {
+        "name": "updateIncident",
+        "description": "Updates fields or comments on a specific incident ticket using its sys_id.",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$.result",
+            "properties": {
+              "title": "$.number",
+              "subtitle": "$.category"
+            },
+            "static_template": {
+              "file": "./adaptiveCards/createIncident.json"
+            }
+          }
+        }
+      },
+      {
+        "name": "deleteIncident",
+        "description": "Deletes a specific incident ticket using its sys_id.",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$.result",
+            "properties": {
+              "title": "$.number",
+              "subtitle": "$.category"
+            },
+            "static_template": {
+              "file": "./adaptiveCards/deletedIncident.json"
+            }
+          }
+        }
+      },
+      {
+        "name": "getAllUserGroups",
+        "description": "Returns sys_ids and names of user groups. Useful for routing or assignment during ticket creation."
+      },
+      {
+        "name": "getUsers",
+        "description": "Returns the sys_ids and names of all users. Useful for when the sys_id of a user is needed to create an incident or catalog item request."
+      },
+      {
+        "name": "getServiceCatalogTasks",
+        "description": "Returns the service catalog tasks associated with a specific request."
+      },
+      {
+        "name": "createItemOrder",
+        "description": "Creates an order for a specific catalog item using its sys_id.",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$.result",
+            "properties": {
+              "title": "$.title"
+            },
+            "static_template": {
+              "file": "./adaptiveCards/catalogItemOrder.json"
+            }
+          }
+        }
+      },
+      {
+        "name": "lookupReferenceChoices",
+        "description": "Internal use only",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$.result",
+            "properties": {
+              "title": "$.title"
+            }
+          }
+        }
+      },
+      {
+        "name": "placeCatalogOrder",
+        "description": "Internal use only",
+        "capabilities": {
+          "response_semantics": {
+            "data_path": "$.result",
+            "static_template": {
+              "file": "./adaptiveCards/createdItemOrder.json"
+            }
+          }
+        }
+      }
+    ],
+    "runtimes": [
+      {
+        "type": "OpenApi",
+        "auth": {
+          "type": "OAuthPluginVault",
+          "reference_id": "NzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IyM3NDYxODgxMS1kYWQwLTRlYzAtYjM2YS1mNzViODk1YjdiODU="
+        },
+        "spec": {
+          "url": "apiSpecificationFile/openapi-final.yaml"
+        },
+        "run_for_functions": [
+          "getAllCatalogItems",
+          "createItemOrder",
+          "lookupReferenceChoices",
+          "placeCatalogOrder",
+          "createIncident",
+          "getIncidents",
+          "getIncidentDetails",
+          "updateIncident",
+          "getAllUserGroups",
+          "getUsers",
+          "getServiceCatalogTasks"
+        ]
+      }
+    ]
+  }

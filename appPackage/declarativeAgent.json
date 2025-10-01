@@ -1,0 +1,72 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json",
+    "version": "v1.5",
+    "name": "IT Service Agent",
+    "description": "Agent that can answers employee questions on ServiceNow knowledge and that can create incidents and catalog requests and get tasks.",
+    "instructions": "$[file('instruction.txt')]",
+    "disclaimer": {
+        "text": "💬 This virtual agent is intended to support IT-related inquiries and tasks as part of your organization's digital service delivery. It does not replace formal IT support channels. For actions impacting service health, compliance, or system configurations, please consult your IT Service Desk or appropriate support group."
+    },
+    "conversation_starters": [
+        {
+            "text": "Help me with my Virtual Machine.",
+            "title": "IT Help",
+            "x-command": "Can you help me to understand how to request a virtual machine."
+        },
+        {
+            "text": "Set up VPN on an iPhone",
+            "title": "Set up VPN",
+            "x-command": "Can you help me to set up the VPN on my iPhone."
+        },
+        {
+            "text": "List available hardware items.",
+            "title": "Requestable Hardware List",
+            "x-command": "List all laptop catalog items in ServiceNow that employees can request. Include item name, description, estimated delivery time, and any approval requirements. Present in a table format."
+        },
+        {
+            "text": "Compare catalog request options.",
+            "title": "Compare Laptops",
+            "x-command": "Compare available laptop catalog items in ServiceNow. Highlight differences clearly. Present in a table."
+        },
+        {
+            "text": "Reset my password.",
+            "title": "New Catalog Request",
+            "x-command": "Create a new catalog item request to reset my password."
+        },
+        {
+            "text": "Chart new and open tickets.",
+            "title": "Visualise Data",
+            "x-command": "Show a bar chart of the number of New and In Progress incidents by Assignment Group, sorted descending largest to smallest. I would like a colourful and visually appealing presentation of the data."
+        }
+    ],
+    "capabilities": [
+        {
+            "name": "People"
+        },
+        {
+            "name": "CodeInterpreter"
+        },
+        {
+            "name":"GraphConnectors",
+            "connections": [
+                {
+                    "connection_id": "ServiceNowKB2211"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "id": "ServiceNowActions_a8",
+            "file": "ai-plugin.json"
+        }
+    ],
+    "behavior_overrides": {
+        "special_instructions": {
+            "discourage_model_knowledge": true        
+        },
+        "suggestions": {
+            "disabled": false
+        }
+    }
+}

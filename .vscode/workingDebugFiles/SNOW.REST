@@ -1,0 +1,119 @@
+##Get Entra Token
+GET https://login.microsoftonline.com/8030d928-e557-4a4c-ae1e-95c1c4125eaa/oauth2/v2.0/token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+client_id=88de2e0d-3a1f-4163-afd1-678ed0e84f9b&client_secret=d0114b5d-9be2-4c35-b847-8db9032c10a8&scope=api://88de2e0d-3a1f-4163-afd1-678ed0e84f9b/.default&grant_type=client_credentials
+
+####
+https://dev268987.service-now.com/oauth_auth.do
+  ?response_type=code
+  &client_id=51c46139d07d4895b36d38a935d2b5e6
+  &redirect_uri=https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect
+  &state=testing987
+####
+POST https://dev268987.service-now.com/oauth_token.do
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&code=Yw03AVEEU_fn83rbr1ole8opRj2tMh8KbL_m1c498OckOs1_076TphkSmgvzFQ_gKduQZ2R1KI4kAkBe-6lNMw
+&client_id=51c46139d07d4895b36d38a935d2b5e6
+&client_secret=winn1e2025
+&redirect_uri=https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect
+&state=testing987
+
+####
+curl -X POST https://dev268987.service-now.com/oauth_token.do \
+  -H "Authorization: Basic <base64(ca92cca4c5ca22100ba4fd7a16004118:winn1e2025)>" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=authorization_code&code=CMyzXKpi-LeOWq_QaPk4ZYROkVlyZ9ITFHiABxj61Eh71_uYa4q56DXOLspmDlzDatxIPysYQNiUzBlZMd3n6g&redirect_uri=https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect"
+
+
+####Run Rest API with Entra token
+POST https://dev268987.service-now.com/api/1804822/customorderagent/catalog/orders
+Content-Type: application/json
+Authorization: Bearer GsMjKlTUJ-qDB03_l0on_9YtvTH0YAITNDtZngnZLuwZiLm5WwO1l465WJ0YRb1ansF2XtaDPjvcQzswxfWStw
+
+{
+  "catalogItemId": "04b7e94b4f7b4200086eeed18110c7fd"
+}
+####
+7r7NUB25i0FaFEjIHUgDCxRFfjlzB5iHt9OlxVdpe_u9dupv5Y75XjaQtoM-Wbs1b3oE0S2NLaMgY9I8ILp1gw
+
+####
+
+##Run REST API with API Key 
+GET https://dev201548.service-now.com/api/now/table/incident?apikey=now_lzqgZCnW5IozogzpyS0a3O7o3d_p8bCdrqO5BErZChC3oCKAHOrdF8S59J0zYY3BdhJyj8O8SooFbKgegWISFg HTTP/1.1
+Content-Type: application/json
+
+curl -u 'admin:mIEh6jpTT9*=' https://dev217950.service-now.com/api/now/table/kb_knowledge
+
+
+curl --location --request GET 'https://dev217950.service-now.com/api/now/table/sys_user_group?sysparm_display_value=true&sysparm_limit=10' \
+--header 'x-sn-apikey: now_s5XtXYTHfPUIl3sbkbAs8thBEBdMBV0lYEIB5zO_fOTi3yTuSAJgYqS29PQ3DDJdynON9HUdmYGOsneLJJCgMA' \
+--header 'Content-Type: application/json'
+
+
+curl --location --request GET 'https://dev201548.service-now.com/api/now/table/incident/471bfbc7a9fe198101e77a3e10e5d47f?sysparm_display_value=true&sysparm_limit=1000000&sysparm_query=state=1' \
+--header 'x-sn-apikey: now_lzqgZCnW5IozogzpyS0a3O7o3d_p8bCdrqO5BErZChC3oCKAHOrdF8S59J0zYY3BdhJyj8O8SooFbKgegWISFg' \
+--header 'Content-Type: application/json'
+
+
+
+curl -X POST \
+  -d 'grant_type=client_credentials' \
+  -d 'client_id=fcf07e188c462210b9138110e9b6dc48' \
+  -d 'client_secret=smJT<o(.cc' \
+  -d 'scope=global' \
+  https://dev217950.service-now.com/oauth_token.do
+
+
+curl -d "grant_type=authorization_code&code=MBpkhmrrcQHkEIfKNrd54LHzjg8iy3q27ijX5P1rtxq8SoZ8HgCSXBFyGBGMavjMNOTmS2eCYFFV5kV2-ba_Dg&redirect_uri=https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect&client_id=fcf07e188c462210b9138110e9b6dc48&client_secret=smJT<o(.cc" \
+     https://dev217950.service-now.com/oauth_token.do
+``` 
+#####
+POST https://dev217950.service-now.com/oauth_token.do
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+client_id=01a2fb14588a221021ebb03b668670b0
+client_secret=winn1e2025
+code=TKDS0U9OI6cqxsdG550i93HbNqY2xtE6Tlk7hHpQcr92KXExmj7mTZQeAnFmueWS4sm07PTrF9QdGt8ZXkp8Gw
+redirect_uri=https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect
+
+
+
+GET https://dev217950.service-now.com/api/now/table/item_option_new?sysparm_query=cat_item%3Dc3b9cbf29716cd1021983d1e6253afad&sysparm_fields=name%2Cquestion_text%2Ctype%2Cmandatory
+
+
+GET /api/now/table/sc_cat_item?sysparm_fields=sys_id,name,short_description&sysparm_limit=10000&sysparm_display_value=true
+
+GET https://dev217950.service-now.com/api/now/table/sc_cat_item?sysparm_display_value=true&sysparm_fields=sys_id%2Cname%2Cshort_description%2Cdescription&sysparm_limit=10
+
+
+
+
+GET https://dev217950.service-now.com/api/now/table/item_option_new?sysparm_query=cat_item%3D29a39e830a0a0b27007d1e200ad52253&sysparm_fields=sys_id%2Cname%2Cquestion_text%2Ctype%2Cmandatory&sysparm_limit=10
+
+
+
+sys_updated_on
+number
+opened_by
+company
+location
+state
+sys_created_on
+contact_type
+incident_state
+impact
+priority
+severity
+approval
+sla_due
+opened_at
+resolved_at
+description
+short_description
+comments
+comments_and_work_notes
+category

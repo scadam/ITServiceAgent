@@ -1,0 +1,63 @@
+openapi: 3.0.4
+info:
+  title: ServiceNow Incident API - Subset
+  description: API to retrieve and create incidents in ServiceNow.
+  version: 1.0.0
+servers:
+  - url: https://dev268987.service-now.com/api
+    description: ServiceNow API Server
+paths:
+  /now/table/sc_cat_item:
+    get:
+      summary: Gets a list of all catalog items
+      description: Gets the complete list of all catalog items from the REST API, including their sys_id, name, short description, and HTML-formatted description field
+      operationId: getAllCatalogItems
+      parameters:
+        - name: sysparm_display_value
+          in: query
+          schema:
+            type: boolean
+        - name: sysparm_fields
+          in: query
+          schema:
+            type: string
+        - name: sysparm_limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved list of catalog items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sys_id:
+                          type: string
+                          description: Unique system identifier for the catalog item
+                        name:
+                          type: string
+                          description: Name of the catalog item
+                        short_description:
+                          type: string
+                          nullable: true
+                          description: Brief summary of the catalog item
+                        description:
+                          type: string
+                          description: Rich HTML-formatted description of the catalog item
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dev268987.service-now.com/oauth_auth.do
+          tokenUrl: https://dev268987.service-now.com/oauth_token.do
+          refreshUrl: https://dev268987.service-now.com/oauth_token.do
+          scopes: {}

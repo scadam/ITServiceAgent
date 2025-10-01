@@ -1,0 +1,36 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "bleed": true,
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "✅ Incident ${number} has been deleted successfully",
+                    "weight": "Bolder",
+                    "size": "Medium",
+                    "color": "Good",
+                    "wrap": true
+                }
+            ]
+        },
+        {
+            "type": "FactSet",
+            "facts": [
+                { "title": "Short Description:", "value": "${short_description}" },
+                { "title": "Description:", "value": "${description}" },
+                { "title": "Priority:", "value": "${priority}" },
+                { "title": "Impact:", "value": "${impact}" },
+                { "title": "Severity:", "value": "${severity}" },
+                { "title": "State:", "value": "${state}" },
+                { "title": "Opened At:", "value": "${opened_at}" },
+                { "title": "Updated On:", "value": "${sys_updated_on}" },
+                { "title": "Updated By:", "value": "${sys_updated_by}" }
+            ]
+        }
+    ]
+}

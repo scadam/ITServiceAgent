@@ -1,0 +1,441 @@
+{
+  "sc_cat_item": {
+    "result": [
+      {
+        "entitlement_script": "",
+        "use_sc_layout": "true",
+        "show_variable_help_on_load": "false",
+        "no_order_now": "false",
+        "sc_ic_version": "",
+        "delivery_time": "1970-01-03 00:00:00",
+        "sys_updated_on": "2024-08-08 09:16:16",
+        "type": "item",
+        "published_ref": "",
+        "no_search": "false",
+        "sys_updated_by": "admin",
+        "price": "396.1155",
+        "sys_created_on": "2022-03-21 20:56:10",
+        "recurring_frequency": "",
+        "sys_name": "Pixel 4a",
+        "model": "",
+        "state": "",
+        "no_cart": "false",
+        "sys_created_by": "admin",
+        "group": "",
+        "hide_sp": "false",
+        "order": "0",
+        "start_closed": "false",
+        "image": "",
+        "no_quantity": "false",
+        "workflow": "",
+        "delivery_plan": "",
+        "active": "true",
+        "checked_out": "",
+        "custom_cart": "",
+        "no_cart_v2": "false",
+        "no_proceed_checkout": "false",
+        "version": "",
+        "ignore_price": "false",
+        "sys_update_name": "sc_cat_item_07d8173e9756cd1021983d1e6253af1d",
+        "meta": "",
+        "omit_price": "false",
+        "name": "Pixel 4a",
+        "flow_designer_flow": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_hub_flow/30f3d26187e92300e0ef0cf888cb0b91",
+          "value": "30f3d26187e92300e0ef0cf888cb0b91"
+        },
+        "mobile_hide_price": "false",
+        "no_wishlist_v2": "false",
+        "sys_policy": "",
+        "preview": "JavaScript: popupOpenStandard(\"com.glideapp.servicecatalog_cat_item_view.do?v=1&sysparm_id=07d8173e9756cd1021983d1e6253af1d&sysparm_preview=true\", \"summary\");",
+        "template": "",
+        "short_description": "Request for pixel 4a",
+        "access_type": "restricted",
+        "fulfillment_automation_level": "semi_automated",
+        "roles": "",
+        "icon": "1119311f974fc51021983d1e6253afe7",
+        "description": "<p><span style=\"font-size: 10pt;\"><strong>Key features:</strong></span></p>\n<p><span style=\"font-size: 10pt;\">Display: 5.81 inches</span></p>\n<p><span style=\"font-size: 10pt;\">Camera: 12.2MP rear and 8MP front camera</span></p>\n<p><span style=\"font-size: 10pt;\">Battery: 3140 mAh</span></p>\n<p><span style=\"font-size: 10pt;\">RAM: 6GB</span></p>\n<p><span style=\"font-size: 10pt;\">Processor: Qualcomm snapdragon 730G</span></p>",
+        "mobile_picture": "",
+        "sc_template": "",
+        "availability": "on_desktop",
+        "mandatory_attachment": "false",
+        "request_method": "",
+        "visible_guide": "true",
+        "visible_standalone": "true",
+        "sys_class_name": "sc_cat_item",
+        "sys_id": "07d8173e9756cd1021983d1e6253af1d",
+        "no_order": "false",
+        "vendor": "",
+        "no_attachment_v2": "false",
+        "mobile_picture_type": "use_desktop_picture",
+        "sys_scope": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_scope/global",
+          "value": "global"
+        },
+        "visible_bundle": "true",
+        "sc_catalogs": "e0d08b13c3330100c8b837659bba8fb4",
+        "make_item_non_conversational": "false",
+        "ordered_item_link": "",
+        "owner": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_user/6816f79cc0a8016401c5a33be04be441",
+          "value": "6816f79cc0a8016401c5a33be04be441"
+        },
+        "no_delivery_time_v2": "false",
+        "cost": "0",
+        "no_quantity_v2": "false",
+        "sys_mod_count": "18",
+        "recurring_price": "0",
+        "list_price": "0",
+        "sys_tags": "",
+        "billable": "false",
+        "picture": "9265c66b775211105e3db2a07b5a99dd",
+        "sys_package": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_package/c599cc7be1f222108bb2327e625886a0",
+          "value": "c599cc7be1f222108bb2327e625886a0"
+        },
+        "display_price_property": "non_zero",
+        "taxonomy_topic": "",
+        "delivery_plan_script": "",
+        "location": "",
+        "category": {
+          "link": "https://dev268987.service-now.com/api/now/table/sc_category/d68eb4d637b1300054b6a3549dbe5db2",
+          "value": "d68eb4d637b1300054b6a3549dbe5db2"
+        },
+        "no_save_as_draft": "false"
+      }
+    ]
+  },
+  "item_option_new": {
+    "result": [
+      {
+        "dynamic_ref_qual": "",
+        "rec_lookup_price": "",
+        "rec_price_if_checked": "0",
+        "display_title": "false",
+        "tooltip": "",
+        "show_help_on_load": "false",
+        "sys_updated_on": "2022-03-30 04:21:45",
+        "type": "3",
+        "published_ref": "",
+        "lookup_table": "",
+        "read_only": "false",
+        "record": "",
+        "sys_name": "Choose the colour",
+        "sys_created_by": "admin",
+        "order": "10",
+        "map_to_field": "false",
+        "choice_direction": "down",
+        "delivery_plan": "",
+        "delete_roles": "",
+        "active": "true",
+        "dynamic_value_field": "",
+        "sys_update_name": "item_option_new_0539db3e9756cd1021983d1e6253af82",
+        "field": "",
+        "unique": "false",
+        "macroponent": "",
+        "variable_width": "",
+        "help_text": "",
+        "global": "false",
+        "mandatory": "true",
+        "sys_class_name": "item_option_new",
+        "dynamic_default_value": "",
+        "example_text": "",
+        "conversational_label": "",
+        "pricing_implications": "false",
+        "read_roles": "",
+        "sys_scope": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_scope/global",
+          "value": "global"
+        },
+        "visible_bundle": "true",
+        "create_roles": "",
+        "dynamic_value_dot_walk_path": "",
+        "table": "",
+        "mask_use_encryption": "false",
+        "include_none": "false",
+        "default_value": "black",
+        "price_if_checked": "0",
+        "help_tag": "More information",
+        "question_text": "Choose the colour",
+        "sys_package": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_package/c599cc7be1f222108bb2327e625886a0",
+          "value": "c599cc7be1f222108bb2327e625886a0"
+        },
+        "cat_item": {
+          "link": "https://dev268987.service-now.com/api/now/table/sc_cat_item/07d8173e9756cd1021983d1e6253af1d",
+          "value": "07d8173e9756cd1021983d1e6253af1d"
+        },
+        "lookup_source": "",
+        "validate_regex": "",
+        "rich_text": "",
+        "record_producer_table": "",
+        "attributes": "",
+        "not_available_conversation": "false",
+        "lookup_unique": "false",
+        "reference_qual": "",
+        "default_html_value": "",
+        "instructions": "",
+        "lookup_label": "",
+        "choice_field": "",
+        "save_script": "",
+        "ui_page": "",
+        "reference": "",
+        "sys_updated_by": "admin",
+        "lookup_value": "",
+        "sys_created_on": "2022-03-21 20:59:06",
+        "roles_to_use_also_request_for": "",
+        "mask_use_confirmation": "false",
+        "reference_qual_condition": "",
+        "read_script": "",
+        "visibility": "1",
+        "choice_table": "",
+        "name": "colour",
+        "sys_policy": "",
+        "lookup_dependent_question": "",
+        "hidden": "false",
+        "use_dynamic_default": "false",
+        "description": "",
+        "scale_min": "0",
+        "show_help": "false",
+        "visible_guide": "true",
+        "visible_standalone": "true",
+        "do_not_select_first": "false",
+        "sys_id": "0539db3e9756cd1021983d1e6253af82",
+        "variable_set": "",
+        "write_roles": "",
+        "variable_name": "",
+        "list_table": "",
+        "sp_widget": "",
+        "macro": "",
+        "use_reference_qualifier": "simple",
+        "sys_mod_count": "3",
+        "visible_summary": "true",
+        "lookup_price": "",
+        "post_insert_script": "",
+        "sys_tags": "",
+        "layout": "normal",
+        "enable_also_request_for": "false",
+        "summary_macro": "",
+        "scale_max": "5",
+        "category": "",
+        "topic_block": ""
+      }
+    ]
+  },
+  "question": {
+    "result": [
+      {
+        "lookup_label": "",
+        "dynamic_ref_qual": "",
+        "rec_lookup_price": "",
+        "rec_price_if_checked": "0",
+        "choice_field": "",
+        "display_title": "false",
+        "tooltip": "",
+        "show_help_on_load": "false",
+        "sys_updated_on": "2022-03-30 04:21:45",
+        "type": "3",
+        "ui_page": "",
+        "reference": "",
+        "sys_updated_by": "admin",
+        "lookup_table": "",
+        "read_only": "false",
+        "lookup_value": "",
+        "sys_created_on": "2022-03-21 20:59:06",
+        "record": "",
+        "mask_use_confirmation": "false",
+        "sys_name": "Choose the colour",
+        "reference_qual_condition": "",
+        "sys_created_by": "admin",
+        "order": "10",
+        "map_to_field": "false",
+        "choice_direction": "down",
+        "delete_roles": "",
+        "active": "true",
+        "choice_table": "",
+        "sys_update_name": "item_option_new_0539db3e9756cd1021983d1e6253af82",
+        "field": "",
+        "name": "colour",
+        "help_text": "",
+        "sys_policy": "",
+        "lookup_dependent_question": "",
+        "hidden": "false",
+        "use_dynamic_default": "false",
+        "scale_min": "0",
+        "show_help": "false",
+        "mandatory": "true",
+        "sys_class_name": "item_option_new",
+        "do_not_select_first": "false",
+        "dynamic_default_value": "",
+        "sys_id": "0539db3e9756cd1021983d1e6253af82",
+        "example_text": "",
+        "write_roles": "",
+        "pricing_implications": "false",
+        "read_roles": "",
+        "sys_scope": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_scope/global",
+          "value": "global"
+        },
+        "variable_name": "",
+        "create_roles": "",
+        "list_table": "",
+        "table": "",
+        "macro": "",
+        "use_reference_qualifier": "simple",
+        "mask_use_encryption": "false",
+        "include_none": "false",
+        "sys_mod_count": "3",
+        "lookup_price": "",
+        "default_value": "black",
+        "price_if_checked": "0",
+        "sys_tags": "",
+        "help_tag": "More information",
+        "layout": "normal",
+        "question_text": "Choose the colour",
+        "sys_package": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_package/c599cc7be1f222108bb2327e625886a0",
+          "value": "c599cc7be1f222108bb2327e625886a0"
+        },
+        "summary_macro": "",
+        "lookup_source": "",
+        "record_producer_table": "",
+        "scale_max": "5",
+        "attributes": "",
+        "lookup_unique": "false",
+        "reference_qual": "",
+        "default_html_value": ""
+      }
+    ]
+  },
+  "question_choice": {
+    "result": [
+      {
+        "rec_misc": "0",
+        "question": {
+          "link": "https://dev268987.service-now.com/api/now/table/question/0539db3e9756cd1021983d1e6253af82",
+          "value": "0539db3e9756cd1021983d1e6253af82"
+        },
+        "sys_mod_count": "1",
+        "sys_updated_on": "2022-03-21 21:00:15",
+        "sys_tags": "",
+        "sys_class_name": "question_choice",
+        "published_ref": "",
+        "sys_id": "cae95b7e9756cd1021983d1e6253af6b",
+        "sys_package": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_package/c599cc7be1f222108bb2327e625886a0",
+          "value": "c599cc7be1f222108bb2327e625886a0"
+        },
+        "inactive": "false",
+        "sys_update_name": "question_choice_cae95b7e9756cd1021983d1e6253af6b",
+        "sys_updated_by": "admin",
+        "sys_created_on": "2022-03-21 20:59:52",
+        "sys_name": "White",
+        "sys_scope": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_scope/global",
+          "value": "global"
+        },
+        "text": "White",
+        "value": "white",
+        "sys_created_by": "admin",
+        "misc": "0",
+        "order": "200",
+        "sys_policy": ""
+      },
+      {
+        "rec_misc": "0",
+        "question": {
+          "link": "https://dev268987.service-now.com/api/now/table/question/0539db3e9756cd1021983d1e6253af82",
+          "value": "0539db3e9756cd1021983d1e6253af82"
+        },
+        "sys_mod_count": "1",
+        "sys_updated_on": "2022-03-21 21:00:00",
+        "sys_tags": "",
+        "sys_class_name": "question_choice",
+        "published_ref": "",
+        "sys_id": "fad913be9756cd1021983d1e6253af5c",
+        "sys_package": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_package/c599cc7be1f222108bb2327e625886a0",
+          "value": "c599cc7be1f222108bb2327e625886a0"
+        },
+        "inactive": "false",
+        "sys_update_name": "question_choice_fad913be9756cd1021983d1e6253af5c",
+        "sys_updated_by": "admin",
+        "sys_created_on": "2022-03-21 20:59:44",
+        "sys_name": "Just Black",
+        "sys_scope": {
+          "link": "https://dev268987.service-now.com/api/now/table/sys_scope/global",
+          "value": "global"
+        },
+        "text": "Just Black",
+        "value": "black",
+        "sys_created_by": "admin",
+        "misc": "0",
+        "order": "100",
+        "sys_policy": ""
+      }
+    ]
+  },
+  "placeCatalogOrder_response": {
+    "result": {
+      "sys_id": "25b370e1c398721021a5f7fdd401317a",
+      "number": "REQ0010013",
+      "request_number": "REQ0010013",
+      "request_id": "25b370e1c398721021a5f7fdd401317a",
+      "table": "sc_request"
+    }
+  },
+  "placeCatalogOrder_normalized_body": {
+    "catalogItemId": "04b7e94b4f7b4200086eeed18110c7fd",
+    "variablesJson": [
+      {
+        "id": "optional_label",
+        "label": "Optional Software",
+        "type": "text",
+        "ui": { "multiline": false },
+        "mandatory": false,
+        "value": "",
+        "choices": []
+      },
+      {
+        "id": "acrobat",
+        "label": "Adobe Acrobat",
+        "type": "checkbox",
+        "ui": {},
+        "mandatory": false,
+        "value": false,
+        "choices": []
+      },
+      {
+        "id": "photoshop",
+        "label": "Adobe Photoshop",
+        "type": "checkbox",
+        "ui": {},
+        "mandatory": false,
+        "value": false,
+        "choices": []
+      },
+      {
+        "id": "Additional_software_requirements",
+        "label": "Additional software requirements",
+        "type": "text",
+        "ui": { "multiline": true },
+        "mandatory": false,
+        "value": "",
+        "choices": []
+      }
+    ]
+  }
+}
+
+
+=================================
+
+
+
+
+[CatalogOrder] Normalized body: 
+{
+  "catalogItemId":"04b7e94b4f7b4200086eeed18110c7fd",
+  "variableIds":"{\r\n \"id\": \"optional_label\",\r\n \"label\": \"Optional Software\",\r\n \"type\": \"label\",\r\n \"ui\": {\r\n \"multiline\": false\r\n },\r\n \"mandatory\": false,\r\n \"displayOnly\": true,\r\n \"value\": null,\r\n \"choices\": []\r\n}id{\r\n \"id\": \"acrobat\",\r\n \"label\": \"Adobe Acrobat\",\r\n \"type\": \"checkbox\",\r\n \"ui\": {},\r\n \"mandatory\": false,\r\n \"displayOnly\": false,\r\n \"value\": false,\r\n \"choices\": []\r\n}id{\r\n \"id\": \"photoshop\",\r\n \"label\": \"Adobe Photoshop\",\r\n \"type\": \"checkbox\",\r\n \"ui\": {},\r\n \"mandatory\": false,\r\n \"displayOnly\": false,\r\n \"value\": false,\r\n \"choices\": []\r\n};{\r\n \"id\": \"Additional_software_requirements\",\r\n \"label\": \"Additional software requirements\",\r\n \"type\": \"text\",\r\n \"ui\": {\r\n \"multiline\": true\r\n },\r\n \"mandatory\": false,\r\n \"displayOnly\": false,\r\n \"value\": \"\",\r\n \"choices\": []\r\n}",
+  "variableTypes":"{\r\n \"id\": \"optional_label\",\r\n \"label\": \"Optional Software\",\r\n \"type\": \"label\",\r\n \"ui\": {\r\n \"multiline\": false\r\n },\r\n \"mandatory\": false,\r\n \"displayOnly\": true,\r\n \"value\": null,\r\n \"choices\": []\r\n}type{\r\n \"id\": \"acrobat\",\r\n \"label\": \"Adobe Acrobat\",\r\n \"type\": \"checkbox\",\r\n \"ui\": {},\r\n \"mandatory\": false,\r\n \"displayOnly\": false,\r\n \"value\": false,\r\n \"choices\": []\r\n}type{\r\n \"id\": \"photoshop\",\r\n \"label\": \"Adobe Photoshop\",\r\n \"type\": \"checkbox\",\r\n \"ui\": {},\r\n \"mandatory\": false,\r\n \"displayOnly\": false,\r\n \"value\": false,\r\n \"choices\": []\r\n};{\r\n \"id\": \"Additional_software_requirements\",\r\n \"label\": \"Additional software requirements\",\r\n \"type\": \"text\",\r\n \"ui\": {\r\n \"multiline\": true\r\n },\r\n \"mandatory\": false,\r\n \"displayOnly\": false,\r\n \"value\": \"\",\r\n \"choices\": []\r\n}"
+}

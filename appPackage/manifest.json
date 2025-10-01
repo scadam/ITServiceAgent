@@ -1,0 +1,47 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vdevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "1.8.6",
+    "id": "${{TEAMS_APP_ID}}",
+    "developer": {
+        "name": "Scott Adams, Microsoft, EMEA GBB",
+        "websiteUrl": "https://www.mirosoft.com",
+        "privacyUrl": "https://www.microsoft.com/privacy",
+        "termsOfUseUrl": "https://www.microsoft.com/termofuse"
+    },
+    "icons": {
+        "color": "sn193cp.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "IT Assistant",
+        "full": "IT Assistant Agent"
+    },
+    "description": {
+        "short": "Agent that is integrated with ServiceNow",
+        "full": "Agent that can answers employee questions on ServiceNow knowledge and that can create incidents and catalog item requests."
+    },
+    "accentColor": "#FFFFFF",
+    "composeExtensions": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "copilotAgents": {
+        "declarativeAgents": [            
+            {
+                "id": "declarativeAgent",
+                "file": "declarativeAgent.json"
+            }
+        ]
+    },
+    "validDomains": [
+        "*.service-now.com",
+        "icy-coast-07b52c31e.1.azurestaticapps.net",
+        "login.microsoftonline.com"
+    ],
+    "webApplicationInfo": {
+        "id": "890ba6bd-4633-40cd-b3a3-48ee278c9a98",
+        "resource": "api://icy-coast-07b52c31e.1.azurestaticapps.net/890ba6bd-4633-40cd-b3a3-48ee278c9a98"
+    }
+}

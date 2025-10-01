@@ -1,0 +1,134 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Add item to cart",
+      "weight": "Bolder",
+      "size": "ExtraLarge",
+      "style": "heading"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${title}",
+      "style": "heading",
+      "size": "Large"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${catalogItemId}",
+      "style": "default",
+      "size": "Small"
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "$data": "${variables}",
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "${label}",
+              "wrap": true,
+              "weight": "Bolder",
+              "spacing": "Medium",
+              "$when": "${type == 'label' || displayOnly == true}"
+            },
+            {
+              "type": "TextBlock",
+              "text": "${label}",
+              "wrap": true,
+              "spacing": "Small",
+              "$when": "${slot != null}"
+            },
+            {
+              "type": "Input.Text",
+              "id": "${slot}",
+              "value": "${value ?? ''}",
+              "isMultiline": true,
+              "$when": "${type == 'text' && ui.multiline == true}"
+            },
+            {
+              "type": "Input.Text",
+              "id": "${slot}",
+              "value": "${value ?? ''}",
+              "$when": "${type == 'text' && (ui.multiline == null || ui.multiline == false)}"
+            },
+            {
+              "type": "Input.ChoiceSet",
+              "id": "${slot}",
+              "value": "${value ?? ''}",
+              "style": "expanded",
+              "choices": [
+                {
+                  "$data": "${choices}",
+                  "title": "${title}",
+                  "value": "${sys_id}"
+                }
+              ],
+              "$when": "${type == 'choice' && length(choices) > 0}"
+            },
+            {
+              "type": "Input.ChoiceSet",
+              "id": "${slot}",
+              "isMultiSelect": true,
+              "style": "expanded",
+              "value": "${join(value ?? [], ',')}",
+              "choices": [
+                {
+                  "$data": "${choices}",
+                  "title": "${title}",
+                  "value": "${sys_id}"
+                }
+              ],
+              "$when": "${type == 'multichoice' && length(choices) > 0}"
+            },
+            {
+              "type": "Input.Toggle",
+              "id": "${slot}",
+              "title": "Yes",
+              "valueOn": "true",
+              "valueOff": "false",
+              "value": "${value ? 'true' : 'false'}",
+              "$when": "${type == 'checkbox'}"
+            },
+            {
+              "type": "Input.Number",
+              "id": "${slot}",
+              "value": "${value ?? ''}",
+              "$when": "${type == 'integer' || type == 'number'}"
+            },
+            {
+              "type": "Input.Date",
+              "id": "${slot}",
+              "value": "${value ?? ''}",
+              "$when": "${type == 'date'}"
+            },
+            {
+              "type": "Input.Text",
+              "id": "${slot}",
+              "value": "${value ?? ''}",
+              "placeholder": "YYYY-MM-DD HH:mm",
+              "$when": "${type == 'datetime'}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Execute",
+      "title": "Place order",
+      "verb": "placeCatalogOrder",
+      "associatedInputs": "auto",
+      "data": {
+        "catalogItemId": "${catalogItemId}",
+        "variablesMetadata": "${variablesMetadata}"
+      }
+    }
+  ]
+}

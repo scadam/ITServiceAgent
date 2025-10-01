@@ -1,0 +1,38 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Catalog Order Placed",
+      "weight": "Bolder",
+      "size": "Large",
+      "style": "heading"
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Request Number",
+          "value": "${result.result.number}"
+        },
+        {
+          "title": "Request Sys ID",
+          "value": "${result.result.sys_id}"
+        },
+        {
+          "title": "Opened By",
+          "value": "${result.result.opened_by}"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Request",
+      "url": "https://dev268987.service-now.com/sc_request.do?sys_id=${sys_id}"
+    }
+  ]
+}

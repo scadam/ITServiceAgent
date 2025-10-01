@@ -1,0 +1,57 @@
+{
+    "result": {
+        "catalogItemId": "04b7e94b4f7b4200086eeed18110c7fd",
+        "title": "Standard Laptop",
+        "variables": [
+            {
+                "id": "optional_label",
+                "label": "Optional Software",
+                "type": "label",
+                "ui": {
+                    "multiline": false
+                },
+                "mandatory": false,
+                "displayOnly": true,
+                "value": null,
+                "choices": []
+            },
+            {
+                "id": "acrobat",
+                "label": "Adobe Acrobat",
+                "type": "checkbox",
+                "ui": {},
+                "mandatory": false,
+                "displayOnly": false,
+                "value": false,
+                "choices": []
+            },
+            {
+                "id": "photoshop",
+                "label": "Adobe Photoshop",
+                "type": "checkbox",
+                "ui": {},
+                "mandatory": false,
+                "displayOnly": false,
+                "value": false,
+                "choices": []
+            },
+            {
+                "id": "Additional_software_requirements",
+                "label": "Additional software requirements",
+                "type": "text",
+                "ui": {
+                    "multiline": true
+                },
+                "mandatory": false,
+                "displayOnly": false,
+                "value": "",
+                "choices": []
+            }
+        ],
+        "variablesMetadata": "[
+        {\"slot\":\"1\",\"id\":\"acrobat\",\"type\":\"checkbox\",\"mandatory\":false,\"ui\":{}},
+        {\"slot\":\"2\",\"id\":\"photoshop\",\"type\":\"checkbox\",\"mandatory\":false,\"ui\":{}},
+        {\"slot\":\"3\",\"id\":\"Additional_software_requirements\",\"type\":\"text\",\"mandatory\":false,\"ui\":{\"multiline\":true}}
+        ]"
+    }
+}
