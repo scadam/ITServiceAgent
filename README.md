@@ -67,6 +67,8 @@ Note that the agent uses OAuth2.0 **authorization code** flow to authenticate th
         *   **Method**: `POST`
         *   **Path**: `/catalog/orders`
         *   Paste JavaScript from `catalog-orders.js`.
+     
+        *   **NOTE** This script uses RESTV2 calls and therefore uses an identity embedded in the script. I am using basic auth for demo. You will need to add the user and pass in this script. You will see the script uses "admin" and "<pwd>" as a placeholder. When you deploy this 'for real' you will use managed credentials.
 
 3.  **Save and Note Base API Path**
     *   Click **Update**.
