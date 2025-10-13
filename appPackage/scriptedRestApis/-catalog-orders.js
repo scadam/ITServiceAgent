@@ -68,7 +68,7 @@
         r.setEndpoint(endpoint);
         r.setRequestHeader("Accept", "application/json");
         r.setRequestHeader("Content-Type", "application/json");
-        r.setBasicAuth("admin", "AzS4v@JI$wc1"); // replace with credential alias
+        r.setBasicAuth("admin", "<pwd>"); // replace with credential alias
 
         var requestBody = {
             sysparm_quantity: quantity,
