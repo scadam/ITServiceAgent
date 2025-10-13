@@ -43,9 +43,9 @@ Scott Adams, Microsoft AI Workforce GBB, EMEA
 3.  **Create OAuth Client Registration in Teams Developer Center**
     *   Go to <https://dev.teams.microsoft.com>.
     *   Register new OAuth client:
-        *   **Base URL**: `https://<your-instance>.service-now.com`
-        *   **Auth Endpoint**: `/oauth_auth.do`
-        *   **Token & Refresh Endpoint**: `/oauth_token.do`
+        *   **Base URL**: `https://<your-instance>.service-now.com/api`
+        *   **Auth Endpoint**: `https://<your-instance>.service-now.com/oauth_auth.do`
+        *   **Token & Refresh Endpoint**: `https://<your-instance>.service-now.com/oauth_token.do`
     *   Enter **Client ID** and **Client Secret** from Step 2.
     *   Save and note **OAuth Client Registration ID**.
 
@@ -89,7 +89,7 @@ Scott Adams, Microsoft AI Workforce GBB, EMEA
     *   Sign in with **Search Administrator** or higher permissions.
 
 2.  **Configure Copilot Connector**
-    *   Navigate: `Settings → Search & Intelligence → Data Connectors`.
+    *   Navigate: `Copilot → Connectors → Your Connections`.
     *   Select **Add Connector** → choose **ServiceNow Knowledge**.
     *   Follow prompts:
         *   Provide ServiceNow instance details.
