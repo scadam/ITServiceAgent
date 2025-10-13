@@ -5,6 +5,8 @@ The scope of the ServiceNow integration comprises:
 a) Copilot Connector for ServiceNow Knowledge (requires setup at admin.microsoft.com)
 b) API plugin for ServiceNow focused on incidents and catalog items (requires direct integration via REST APIs)
 
+You will need to have VS Code installed on your machine with the latest version of the M365 Agents Toolkit extension.
+
 Follow the instructions below before attempting to use the agent:
 1. **Pre-requisites** - recommend you test on a developer instance to get started as you will wish to change some of the Scripted REST API authentication prior to deployment on any real instance.
 2. **Install Scripted REST APIs** - create the three operations as a Scripted REST API using the files supplied.
@@ -13,6 +15,10 @@ Follow the instructions below before attempting to use the agent:
 
 Note that the agent uses OAuth2.0 **authorization code** flow to authenticate the user for the REST APIs. For testing, use a developer instance and admin account. When challenged to enter your username and password by the agent use the admin account details. This will happen the first time you run an operation that requires a REST API, and thereafter when your access token expires and needs to be renewed. 
 
+Once you have run through all the steps below, click "Provision" in the M365 Agents Toolkit. Open the M365 Copilot App (force close and open again if it is already open) and you will see your new IT Service agent. Try one of the starter prompts or type something like "create a new incident for me that tells everyone this is amazing!".
+
+Enjoy.
+Scott Adams, Microsoft AI Workforce GBB, EMEA
 
 ***
 
