@@ -104,7 +104,7 @@ Note that the agent uses OAuth2.0 **authorization code** flow to authenticate th
      APP_VERSION=1.0.0
      ```
    - **Purpose:** This variable controls the package name created during the provisioning step.  
-     Changing 
+     Changing this will result in a new build/package file being created as opposed to over-writing the prior file with the same name.
 
 
 ### **Update `ai-plugin.json`**
