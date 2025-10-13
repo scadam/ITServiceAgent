@@ -21,15 +21,14 @@
     varGR.orderBy('order');
     varGR.query();
 
-    // Skeleton map for variablesJson
-    var skeleton = {};
+    var metadataArray = [];
+    var slot = 1;
 
-    while (varGR.next()) {
+    while (varGR.next() && slot <= 10) {
         var typeInfo = mapVariableType(varGR);
 
-        // Base payload for all variables (including labels)
         var variable = {
-            id: deriveId(varGR, typeInfo), // stable ID (name if present, else sys_id)
+            id: deriveId(varGR, typeInfo),
             label: varGR.getValue('question_text') || varGR.getValue('name') || '',
             type: typeInfo.type,
             ui: typeInfo.ui || {},
@@ -64,30 +63,24 @@
             };
         }
 
-        result.variables.push(variable);
-
-        // Add placeholder for variablesJson if not a label
+        // Assign slot only if interactive
         if (!variable.displayOnly) {
-            skeleton[variable.id] = "${" + variable.id + "}";
+            variable.slot = String(slot);
+            metadataArray.push({
+                slot: String(slot),
+                id: variable.id,
+                type: variable.type,
+                mandatory: variable.mandatory === true,
+                ui: variable.ui || {}
+            });
+            slot++;
         }
+
+        result.variables.push(variable);
     }
 
-    // --- Emit variablesMetadata for Script 2 ---
-    var metadataArray = result.variables
-        .filter(function(v) { return v.type !== 'label' && !v.displayOnly; })
-        .map(function(v) {
-            return {
-                id: v.id,
-                type: v.type,
-                mandatory: v.mandatory === true,
-                ui: v.ui || {}
-            };
-        });
-
+    // Emit variablesMetadata with slot mapping
     result.variablesMetadata = JSON.stringify(metadataArray);
-
-    // --- Emit variablesJson skeleton with ${id} placeholders ---
-    result.variablesJson = JSON.stringify(skeleton);
 
     return result;
 

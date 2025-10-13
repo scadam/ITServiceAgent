@@ -4,8 +4,6 @@
         gs.info("[CatalogOrder] Raw JSON: " + raw);
 
         var envelope = JSON.parse(raw);
-
-        // Copilot puts everything under clientData.Data
         var body = (envelope.clientData && envelope.clientData.Data) || envelope.data || envelope;
 
         if (body && body.data) {
@@ -31,18 +29,8 @@
             return { error: 'Invalid quantity format. Must be a positive integer string.' };
         }
 
-        // --- Build variables from variablesJson + metadata ---
+        // --- Build variables from slots + metadata ---
         var variables = {};
-        if (body.variablesJson) {
-            try {
-                variables = JSON.parse(body.variablesJson);
-            } catch (e) {
-                gs.error("[CatalogOrder] Failed to parse variablesJson: " + e.message);
-                variables = {};
-            }
-        }
-
-        // Apply type coercion using metadata
         var meta = [];
         if (body.variablesMetadata) {
             try {
@@ -53,13 +41,20 @@
         }
 
         if (meta.length) {
-            var coerced = {};
             for (var i = 0; i < meta.length; i++) {
-                var m = meta[i];
-                if (!variables.hasOwnProperty(m.id)) continue;
-                coerced[m.id] = coerceValue(variables[m.id], m.type);
+                var m = meta[i]; // {slot:"1", id:"acrobat", type:"checkbox", ...}
+                var slotKey = m.slot;
+                if (!body.hasOwnProperty(slotKey)) continue;
+
+                var rawVal = body[slotKey];
+                var coerced = coerceValue(rawVal, m.type);
+
+                // Skip empty strings, nulls, or empty arrays
+                if (coerced === '' || coerced === null) continue;
+                if (Array.isArray(coerced) && coerced.length === 0) continue;
+
+                variables[m.id] = coerced;
             }
-            variables = coerced;
         }
 
         gs.info("[CatalogOrder] Collected variables: " + JSON.stringify(variables));
