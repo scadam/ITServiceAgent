@@ -13,7 +13,6 @@ Follow the instructions below before attempting to use the agent:
 
 Note that the agent uses OAuth2.0 **authorization code** flow to authenticate the user for the REST APIs. For testing, use a developer instance and admin account. When challenged to enter your username and password by the agent use the admin account details. This will happen the first time you run an operation that requires a REST API, and thereafter when your access token expires and needs to be renewed. 
 
-Here’s the complete **single-page Markdown** with all sections combined:
 
 ***
 

@@ -16,18 +16,6 @@ provision:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       teamsAppId: TEAMS_APP_ID
-  - uses: oauth/register
-    with:
-      name: OAuth2
-      flow: authorizationCode
-      # Teams app ID
-      appId: ${{TEAMS_APP_ID}}
-      # Path to OpenAPI description document
-      apiSpecPath: ./appPackage/apiSpecificationFile/openapi-copy.yaml
-      # Use below property to change token exchange behaviour, BasicAuthorizationHeader: token exchange is done via HTTP headers. PostRequestBody: token exchange is done via request body
-      tokenExchangeMethodType: PostRequestBody
-    writeToEnvironmentFile:
-      configurationId: OAUTH_REGISTRATION_ID
 
   # Build Teams app package with latest env value
   - uses: teamsApp/zipAppPackage
