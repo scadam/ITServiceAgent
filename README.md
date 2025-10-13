@@ -159,5 +159,3 @@ securitySchemes:
 
 ***
 
-✅ This is now a **single-page Markdown guide** ready for sharing.  
-Would you like me to **add a quick architecture diagram (ServiceNow ↔ Teams ↔ Copilot)** as an image for visual clarity?
