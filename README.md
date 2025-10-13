@@ -89,7 +89,7 @@ Scott Adams, Microsoft AI Workforce GBB, EMEA
     *   Sign in with **Search Administrator** or higher permissions.
 
 2.  **Configure Copilot Connector**
-    *   Navigate: `Settings → Search & Intelligence → Data Connectors`.
+    *   Navigate: `Copilot → Connectors → Your Connections`.
     *   Select **Add Connector** → choose **ServiceNow Knowledge**.
     *   Follow prompts:
         *   Provide ServiceNow instance details.
