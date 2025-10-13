@@ -1,5 +1,17 @@
 # ITServiceAgent
 
+This code project contains all required files to deploy a declarative agent for Microsoft 365 Copilot that demonstrates integration with ServiceNow.
+The scope of the ServiceNow integration comprises:
+a) Copilot Connector for ServiceNow Knowledge (requires setup at admin.microsoft.com)
+b) API plugin for ServiceNow focused on incidents and catalog items (requires direct integration via REST APIs)
+
+Follow the instructions below before attempting to use the agent:
+1. **Pre-requisites** - recommend you test on a developer instance to get started as you will wish to change some of the Scripted REST API authentication prior to deployment on any real instance.
+2. **Install Scripted REST APIs** - create the three operations as a Scripted REST API using the files supplied.
+3. **Update agent manifest files** - update ai-plugin and openapi-final.yml to use your instance and path details.
+
+Note that the agent uses OAuth2.0 **authorization code** flow to authenticate the user for the REST APIs. For testing, use a developer instance and admin account. When challenged to enter your username and password by the agent use the admin account details. This will happen the first time you run an operation that requires a REST API, and thereafter when your access token expires and needs to be renewed. 
+
 # **Pre-requisites**
 
 ### **1. Create a ServiceNow Developer Instance**
