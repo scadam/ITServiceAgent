@@ -39,9 +39,5 @@
         "*.service-now.com",
         "icy-coast-07b52c31e.1.azurestaticapps.net",
         "login.microsoftonline.com"
-    ],
-    "webApplicationInfo": {
-        "id": "890ba6bd-4633-40cd-b3a3-48ee278c9a98",
-        "resource": "api://icy-coast-07b52c31e.1.azurestaticapps.net/890ba6bd-4633-40cd-b3a3-48ee278c9a98"
-    }
+    ]
 }
