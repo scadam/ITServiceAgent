@@ -94,6 +94,20 @@ Here’s the complete **single-page Markdown** with all sections combined:
 
 ## 4. Update Agent Manifest & OpenAPI Specification
 
+### **Update/add `.env.dev`**
+
+**Add Environment Variable**
+   - In your project, locate the `env` folder.
+   - Add a new file named:  
+     `.env.dev`
+   - Define the following variable inside the file:  
+     ```
+     APP_VERSION=1.0.0
+     ```
+   - **Purpose:** This variable controls the package name created during the provisioning step.  
+     Changing 
+
+
 ### **Update `ai-plugin.json`**
 
 ```json
