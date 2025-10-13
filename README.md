@@ -58,4 +58,47 @@ Note that the agent uses OAuth2.0 **authorization code** flow to authenticate th
 
 ***
 
+## Install Scripted REST APIs
+
+### Steps:
+
+1.  **Create a New Scripted REST API**
+    *   Navigate to: **System Web Services → Scripted REST APIs → New**
+    *   Enter:
+        *   **Name:** `CustomOrder`
+        *   **API ID:** `customorderagent`
+    *   Click **Submit**.
+
+2.  **Add Resources (Operations)**
+
+    *   Open the newly created API and click **New Resource** for each operation:
+
+    **Resource 1:**
+
+    *   **HTTP Method:** `GET`
+    *   **Resource Path:** `/catalog/variables/{sys_id}`
+    *   Paste JavaScript from `catalog-variables-{sys_id}.js` (from `scriptedRestApis` folder).
+    *   Click **Submit**.
+
+    **Resource 2:**
+
+    *   **HTTP Method:** `POST`
+    *   **Resource Path:** `/catalog/reference/lookup`
+    *   Paste JavaScript from `catalog-reference-lookup.js`.
+    *   Click **Submit**.
+
+    **Resource 3:**
+
+    *   **HTTP Method:** `POST`
+    *   **Resource Path:** `/catalog/orders`
+    *   Paste JavaScript from `catalog-orders.js`.
+    *   Click **Submit**.
+
+3.  **Save and Note Base API Path**
+    *   Click **Update** to save the Scripted REST API.
+    *   Locate **Base API Path** (top-right of the API form).
+    *   **Record this value** — it will be required for the next step.
+
+***
+
 
