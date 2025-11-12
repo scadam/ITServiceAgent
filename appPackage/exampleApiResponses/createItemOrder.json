@@ -1,0 +1,58 @@
+{
+    "result": {
+        "catalogItemId": "07d8173e9756cd1021983d1e6253af1d",
+        "title": "Pixel 4a",
+        "variables": [
+            {
+                "id": "colour",
+                "label": "Choose the colour",
+                "type": "choice",
+                "ui": {},
+                "mandatory": true,
+                "displayOnly": false,
+                "value": "black",
+                "choices": [
+                    {
+                        "title": "Just Black",
+                        "value": "fad913be9756cd1021983d1e6253af5c",
+                        "sys_id": "fad913be9756cd1021983d1e6253af5c"
+                    },
+                    {
+                        "title": "White",
+                        "value": "cae95b7e9756cd1021983d1e6253af6b",
+                        "sys_id": "cae95b7e9756cd1021983d1e6253af6b"
+                    }
+                ],
+                "slot": "1"
+            },
+            {
+                "id": "storage",
+                "label": "Choose the storage",
+                "type": "choice",
+                "ui": {},
+                "mandatory": true,
+                "displayOnly": false,
+                "value": "",
+                "choices": [
+                    {
+                        "title": "128 GB",
+                        "value": "617a13fe9756cd1021983d1e6253afb5",
+                        "sys_id": "617a13fe9756cd1021983d1e6253afb5"
+                    },
+                    {
+                        "title": "256 GB",
+                        "value": "5823df829787011021983d1e6253af33",
+                        "sys_id": "5823df829787011021983d1e6253af33"
+                    },
+                    {
+                        "title": "512 GB",
+                        "value": "2a835b069787011021983d1e6253af25",
+                        "sys_id": "2a835b069787011021983d1e6253af25"
+                    }
+                ],
+                "slot": "2"
+            }
+        ],
+        "variablesMetadata": "[{\"slot\":\"1\",\"id\":\"colour\",\"type\":\"choice\",\"mandatory\":true,\"ui\":{}},{\"slot\":\"2\",\"id\":\"storage\",\"type\":\"choice\",\"mandatory\":true,\"ui\":{}}]"
+    }
+}

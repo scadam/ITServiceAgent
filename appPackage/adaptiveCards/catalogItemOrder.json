@@ -58,33 +58,21 @@
               "$when": "${type == 'text' && (ui.multiline == null || ui.multiline == false)}"
             },
             {
-              "type": "Input.ChoiceSet",
-              "id": "${slot}",
-              "value": "${value ?? ''}",
-              "style": "expanded",
-              "choices": [
-                {
-                  "$data": "${choices}",
-                  "title": "${title}",
-                  "value": "${sys_id}"
-                }
-              ],
-              "$when": "${type == 'choice' && length(choices) > 0}"
+                "type": "Input.ChoiceSet",
+                "id": "${slot}",
+                "value": "${choices[0].value}",
+                "style": "expanded",
+                "choices": "${choices}",
+                "$when": "${type == 'choice'}"
             },
             {
               "type": "Input.ChoiceSet",
               "id": "${slot}",
               "isMultiSelect": true,
               "style": "expanded",
-              "value": "${join(value ?? [], ',')}",
-              "choices": [
-                {
-                  "$data": "${choices}",
-                  "title": "${title}",
-                  "value": "${sys_id}"
-                }
-              ],
-              "$when": "${type == 'multichoice' && length(choices) > 0}"
+              "value": "${choices[0].value}",
+              "choices": "${choices}",
+              "$when": "${type == 'multichoice'}"
             },
             {
               "type": "Input.Toggle",
